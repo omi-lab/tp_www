@@ -72,8 +72,8 @@ const std::unordered_map<std::string, MultipartFormData>& Request::multipartForm
 std::string Request::subRoute(int routePart)const
 {
   std::string result;
-  int iMax = m_route.size();
-  for(int i=tpMax(0, routePart); i<iMax; i++)
+  size_t iMax = m_route.size();
+  for(size_t i=size_t(tpMax(0, routePart)); i<iMax; i++)
     result += "/" + m_route.at(i);
   return result;
 }
@@ -81,7 +81,7 @@ std::string Request::subRoute(int routePart)const
 //##################################################################################################
 std::string Request::routePart(int routePart)const
 {
-  return (routePart>=0 && routePart<int(m_route.size()))?m_route.at(routePart):std::string();
+  return (routePart>=0 && routePart<int(m_route.size()))?m_route.at(size_t(routePart)):std::string();
 }
 
 //##################################################################################################
@@ -90,7 +90,7 @@ std::string Request::routeBase(int routePart)const
   std::string result;
   int iMax = tpMin(int(m_route.size()), routePart);
   for(int i=0; i<iMax; i++)
-    result += "/" + m_route.at(i);
+    result += "/" + m_route.at(size_t(i));
   return result;
 }
 

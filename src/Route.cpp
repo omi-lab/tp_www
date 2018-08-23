@@ -44,19 +44,30 @@ const std::string& Route::name()const
 //##################################################################################################
 bool Route::handleRequest(Request& request, int routePart)
 {
+  bool dbg=false;
   const std::vector<std::string>& route = request.route();
 
   if(routePart<0 || routePart>=int(route.size()))
     return false;
 
-  const std::string& name = route.at(routePart);
-  Route* child = tp_utils::getMapValue(d->routes, name, static_cast<Route*>(nullptr));
+  const std::string& name = route.at(size_t(routePart));
+  Route* child = tpGetMapValue(d->routes, name, nullptr);
+
+  if(dbg)
+    tpWarning() << "Route::handleRequest name: " << name;
 
   if(child)
+  {
+    if(dbg)
+      tpWarning() << "  call child: " << name;
     return child->handleRequest(request, routePart+1);
-
+  }
   else if(d->starRoute)
+  {
+    if(dbg)
+      tpWarning() << "  start route: " << name;
     return d->starRoute->handleRequest(request, routePart+1);
+  }
 
   return false;
 }

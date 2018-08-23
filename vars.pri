@@ -11,3 +11,6 @@ HEADERS += inc/tp_www/Request.h
 
 SOURCES += src/Route.cpp
 HEADERS += inc/tp_www/Route.h
+
+SOURCES += src/routes/DebugRoute.cpp
+HEADERS += inc/tp_www/routes/DebugRoute.h
