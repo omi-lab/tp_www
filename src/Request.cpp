@@ -24,6 +24,7 @@ Request::Request(std::ostream& out,
                  std::ostream& err,
                  const std::vector<std::string>& route,
                  RequestType requestType,
+                 const std::string& content,
                  const std::unordered_map<std::string, std::string>& postParams,
                  const std::unordered_map<std::string, std::string>& getParams,
                  const std::unordered_map<std::string, MultipartFormData>& multipartFormData):
@@ -31,6 +32,7 @@ Request::Request(std::ostream& out,
   m_err(err),
   m_route(route),
   m_requestType(requestType),
+  m_content(content),
   m_postParams(postParams),
   m_getParams(getParams),
   m_multipartFormData(multipartFormData)
@@ -48,6 +50,12 @@ const std::vector<std::string>& Request::route()const
 RequestType Request::requestType()const
 {
   return m_requestType;
+}
+
+//##################################################################################################
+const std::string& Request::content()const
+{
+  return m_content;
 }
 
 //##################################################################################################

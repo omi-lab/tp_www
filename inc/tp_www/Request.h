@@ -44,6 +44,7 @@ class Request
   std::ostream& m_err;
   const std::vector<std::string>& m_route;
   RequestType m_requestType;
+  const std::string m_content;
   const std::unordered_map<std::string, std::string>& m_postParams;
   const std::unordered_map<std::string, std::string>& m_getParams;
   const std::unordered_map<std::string, MultipartFormData>& m_multipartFormData;
@@ -54,6 +55,7 @@ public:
           std::ostream& err,
           const std::vector<std::string>& route,
           RequestType requestType,
+          const std::string& content,
           const std::unordered_map<std::string, std::string>& postParams,
           const std::unordered_map<std::string, std::string>& getParams,
           const std::unordered_map<std::string, MultipartFormData>& multipartFormData);
@@ -63,6 +65,10 @@ public:
 
   //################################################################################################
   RequestType requestType()const;
+
+  //################################################################################################
+  //! The main body of the request
+  const std::string& content()const;
 
   //################################################################################################
   const std::unordered_map<std::string, std::string>& postParams()const;
