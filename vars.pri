@@ -3,7 +3,7 @@ TEMPLATE = lib
 
 DEFINES += TP_WWW_LIBRARY
 
-SOURCES += src/Globals.cpp
+#SOURCES += src/Globals.cpp
 HEADERS += inc/tp_www/Globals.h
 
 SOURCES += src/Request.cpp
