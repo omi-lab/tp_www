@@ -40,6 +40,8 @@ struct MultipartFormData
 //##################################################################################################
 class Request
 {
+  int m_httpStatus{0};
+
   std::ostream& m_out;
   std::ostream& m_err;
   const std::vector<std::string>& m_route;
@@ -92,10 +94,13 @@ public:
   std::string routeBase(int routePart)const;
 
   //################################################################################################
-  void sendHeader(int htmlStatus, const char* contentType);
+  void sendHeader(int httpStatus, const char* contentType);
 
   //################################################################################################
-  void sendBinary(int htmlStatus, const char* contentType, const std::string& data);
+  void sendBinary(int httpStatus, const char* contentType, const std::string& data);
+
+  //################################################################################################
+  int httpStatus() const;
 
   //################################################################################################
   std::ostream& out();

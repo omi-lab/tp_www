@@ -103,10 +103,11 @@ std::string Request::routeBase(int routePart)const
 }
 
 //##################################################################################################
-void Request::sendHeader(int htmlStatus, const char* contentType)
+void Request::sendHeader(int httpStatus, const char* contentType)
 {
+  m_httpStatus = httpStatus;
   m_out << "Status: "
-        << htmlStatus
+        << httpStatus
         << "\r\n"
            "Content-type: "
         << contentType
@@ -115,11 +116,12 @@ void Request::sendHeader(int htmlStatus, const char* contentType)
 }
 
 
-//################################################################################################
-void Request::sendBinary(int htmlStatus, const char* contentType, const std::string& data)
+//##################################################################################################
+void Request::sendBinary(int httpStatus, const char* contentType, const std::string& data)
 {
+  m_httpStatus = httpStatus;
   m_out << "Status: "
-        << htmlStatus
+        << httpStatus
         << "\r\n"
            "Content-type: "
         << contentType
@@ -129,6 +131,12 @@ void Request::sendBinary(int htmlStatus, const char* contentType, const std::str
         << "\r\n"
            "\r\n"
         << data;
+}
+
+//##################################################################################################
+int Request::httpStatus() const
+{
+  return m_httpStatus;
 }
 
 //##################################################################################################
