@@ -10,7 +10,7 @@ namespace tp_www
 //##################################################################################################
 struct Route::Private
 {
-  const std::string& name;
+  const std::string name;
   std::unordered_map<std::string, Route*> routes;
   Route* starRoute{nullptr};
 
@@ -35,7 +35,7 @@ Route::~Route()
   delete d;
 }
 
-//################################################################################################
+//##################################################################################################
 const std::string& Route::name()const
 {
   return d->name;
