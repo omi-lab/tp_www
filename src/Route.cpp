@@ -65,7 +65,7 @@ bool Route::handleRequest(Request& request, int routePart)
   else if(d->starRoute)
   {
     if(dbg)
-      tpWarning() << "  start route: " << name;
+      tpWarning() << "  star route: " << name;
     return d->starRoute->handleRequest(request, routePart+1);
   }
 
