@@ -11,6 +11,7 @@ class Request;
 class Route
 {
   TP_NONCOPYABLE(Route);
+  TP_DQ;
 public:
 
   //################################################################################################
@@ -27,11 +28,6 @@ public:
 
   //################################################################################################
   void addRoute(Route* route);
-
-private:
-  struct Private;
-  Private* d;
-  friend struct Private;
 };
 
 }
